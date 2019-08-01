@@ -1,3 +1,4 @@
+#include <time.h>
 #include <LEDA/geo/point.h>
 #include <LEDA/geo/random_point.h>
 #include <vector>
@@ -100,9 +101,11 @@ int main()
 {
     list <point> L;
     int n;
-    cout << "Enter Number of Points: ";
     cin >> n;
+    int iteration_number;
+    cin >> iteration_number;
     int sz;
+    srand (time(NULL) + iteration_number);
     //cin >> sz;
     sz = 10000;
     // Random points in sz * sz square
@@ -148,6 +151,7 @@ int main()
             C = min_enclose1(al2);
         }
     }
+    cout << outside_pts << endl;
     myfile.open("circle.txt");
     myfile << C.center().xcoord() << " " << C.center().ycoord() <<" " << C.radius(); 
 }
